@@ -1,0 +1,30 @@
+---
+import Nav from "./nav.astro";
+import styles from "./header.module.css";
+---
+
+<header id="header" class={styles.header}>
+  <a href="/"> <img src="logo.png" alt="LevelUp Logo" class={styles.logo} /></a>
+  <Nav />
+</header>
+
+<script is:inline>
+  // Escucha el evento DOMContentLoaded para asegurarte de que el DOM está cargado.
+  document.addEventListener("DOMContentLoaded", () => {
+    const header = document.getElementById("header");
+
+    if (!header) {
+      console.error("El elemento 'header' no fue encontrado.");
+      return;
+    }
+
+    // Escucha el evento de scroll
+    window.addEventListener("scroll", () => {
+      if (window.scrollY > 90) {
+        header.classList.add("scrolled"); // Clase global
+      } else {
+        header.classList.remove("scrolled"); // Clase global
+      }
+    });
+  });
+</script>
