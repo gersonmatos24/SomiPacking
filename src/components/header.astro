@@ -1,30 +1,62 @@
 ---
-import Nav from "./nav.astro";
-import styles from "./header.module.css";
+import Nav from "./Nav.astro";
+import SocialIcons from "./SocialIcons.astro";
 ---
 
-<header id="header" class={styles.header}>
-  <a href="/"> <img src="logo.png" alt="LevelUp Logo" class={styles.logo} /></a>
+<header
+  id="header"
+  class="w-full flex justify-around items-center h-14 bg-transparent fixed shadow-lg z-50 text-white"
+>
+  <a href="/"> <img src="logo.png" alt="Somi Logo" class="h-10" /></a>
   <Nav />
+  <SocialIcons classList="gap-5" />
 </header>
+<script is:inline defer>
+  if (typeof window !== "undefined") {
+    function initializeScript() {
+      try {
+        const element = document.getElementById("header");
 
-<script is:inline>
-  // Escucha el evento DOMContentLoaded para asegurarte de que el DOM está cargado.
-  document.addEventListener("DOMContentLoaded", () => {
-    const header = document.getElementById("header");
+        if (!element) {
+          console.error("El elemento con ID 'header' no fue encontrado.");
+          return;
+        }
 
-    if (!header) {
-      console.error("El elemento 'header' no fue encontrado.");
-      return;
+        let lastScrollY = window.scrollY;
+        let hideThreshold = 90; // Cuándo ocultar el header
+        let hidden = false; // Si el header está oculto
+        let tolerance = 10;
+
+        window.addEventListener("scroll", () => {
+          let currentScrollY = window.scrollY;
+
+          if (
+            currentScrollY > hideThreshold &&
+            !hidden &&
+            currentScrollY - lastScrollY > tolerance
+          ) {
+            element.style.transform = "translateY(-100%)";
+            element.style.transition = "transform 0.3s ease-in-out";
+            hidden = true;
+          } else if (currentScrollY < lastScrollY - tolerance && hidden) {
+            element.style.transform = "translateY(0)";
+            element.style.transition = "transform 0.3s ease-in-out";
+            hidden = false;
+          }
+
+          lastScrollY = currentScrollY;
+        });
+      } catch (error) {
+        console.error("Error al ejecutar el script:", error);
+      }
     }
 
-    // Escucha el evento de scroll
-    window.addEventListener("scroll", () => {
-      if (window.scrollY > 90) {
-        header.classList.add("scrolled"); // Clase global
-      } else {
-        header.classList.remove("scrolled"); // Clase global
-      }
+    // Inicializar el script al cargar la página
+    document.addEventListener("DOMContentLoaded", initializeScript);
+
+    // Reiniciar el script cuando se cambie la ruta
+    window.addEventListener("popstate", () => {
+      initializeScript();
     });
-  });
+  }
 </script>
