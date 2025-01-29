@@ -1,0 +1,17 @@
+---
+const { servicio } = Astro.props;
+
+import ServiciosOptions from "../assets/ServiciosOptions.js";
+
+const servicioData = ServiciosOptions.find((s) => s.href === servicio);
+---
+
+<main>
+  {
+    servicioData ? (
+      <h1>{servicioData.title}</h1>
+    ) : (
+      <h1>Servicio no encontrado</h1>
+    )
+  }
+</main>
