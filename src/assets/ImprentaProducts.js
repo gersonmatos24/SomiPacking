@@ -1,6 +1,7 @@
 const ImprentaProducts = [
   {
     title: "Papeleria",
+    icon: "papeleria.jpg",
     image: "bolsas.jpg",
     description: "Bolsas de diferentes tamaños y colores.",
     products: [
@@ -38,6 +39,7 @@ const ImprentaProducts = [
   },
   {
     title: "Merchandising",
+    icon: "papeleria.jpg",
     image: "cajas.jpg",
     description: "Cajas de diferentes tamaños y colores.",
     products: [
@@ -75,6 +77,7 @@ const ImprentaProducts = [
   },
   {
     title: "Impresiones",
+    icon: "papeleria.jpg",
     image: "envolturas.jpg",
     description: "Bolsas de diferentes tamaños y colores.",
     products: [

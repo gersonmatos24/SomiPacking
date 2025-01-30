@@ -1,6 +1,7 @@
 const PackagingProducts = [
   {
     title: "Bolsas",
+    icon: "papeleria.jpg",
     image: "bolsas.jpg",
     description: "Bolsas de diferentes tamaños y colores.",
     products: [
@@ -38,6 +39,7 @@ const PackagingProducts = [
   },
   {
     title: "Cajas",
+    icon: "papeleria.jpg",
     image: "cajas.jpg",
     description: "Cajas de diferentes tamaños y colores.",
     products: [
@@ -75,6 +77,7 @@ const PackagingProducts = [
   },
   {
     title: "Envolturas para alimentos",
+    icon: "papeleria.jpg",
     image: "envolturas.jpg",
     description: "Bolsas de diferentes tamaños y colores.",
     products: [
